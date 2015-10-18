@@ -15,8 +15,8 @@ import edu.uniandes.data.Transaccion;
 import edu.uniandes.domain.Usuario;
 
 public class ConectionMYSQLUsuarioDAO {
-	private String usuario = "ISIS2304331520";
-	private String password = "4XtBpDKg3P7M";
+	private String usuario = "ISIS2304091520";
+	private String password = "cAeZtjShc2jP";
 	private String url = "jdbc:oracle:thin:@fn3.oracle.virtual.uniandes.edu.co:1521:prod";
 
 	public void ejecutarQuery(String query) throws SQLException {
@@ -133,7 +133,6 @@ public class ConectionMYSQLUsuarioDAO {
 								tryParser(saldo), tipoCuenta, moneda_Id,
 								bEstaCerrado, oficina);
 						System.out.println("Cuenta: "+cuentaNueva.getId());
-						cuentasArray.add(cuentaNueva);
 						
 						
 						ArrayList<Transaccion> transaccionesArray = new ArrayList<Transaccion>();
@@ -259,7 +258,6 @@ public class ConectionMYSQLUsuarioDAO {
 									tryParser(saldo), tipoCuenta, moneda_Id,
 									bEstaCerrado, oficina);
 							System.out.println("Cuenta: "+cuentaNueva.getId());
-							cuentasArray.add(cuentaNueva);				
 							
 							
 							
@@ -306,6 +304,7 @@ public class ConectionMYSQLUsuarioDAO {
 							
 							transaccionesArray.add(transaccionNueva);
 						}
+						cuentasArray.add(cuentaNueva);
 						usuarioNuevo.setCuentas(cuentasArray);
 						ArrayList<Usuario> resp = new ArrayList<Usuario>();
 						resp.add(usuarioNuevo);
