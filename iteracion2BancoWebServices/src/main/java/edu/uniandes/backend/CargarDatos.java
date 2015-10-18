@@ -49,7 +49,7 @@ public class CargarDatos {
 	}
 
 	// Sube los datos iniciales de usuarios
-	private void cargarUsuarios() {
+	public void cargarUsuarios() {
 		int i = 1;
 		int j = 0;
 
@@ -105,7 +105,7 @@ public class CargarDatos {
 		}
 	}
 
-	private void cargarOficinas() {
+	public void cargarOficinas() {
 		int i = 1;
 		int j = 0;
 
@@ -139,7 +139,7 @@ public class CargarDatos {
 		}
 	}
 
-	private void cargarPuntos() {
+	public void cargarPuntos() {
 		int i = 1;
 		int j = 0;
 
@@ -171,7 +171,7 @@ public class CargarDatos {
 
 	}
 
-	private void cargarCuentas() {
+	public void cargarCuentas() {
 		int i = 1;
 		int j = 0;
 
@@ -211,7 +211,7 @@ public class CargarDatos {
 		}
 	}
 
-	private void cargarPrestamos() {
+	public void cargarPrestamos() {
 		int i = 1;
 		int j = 0;
 

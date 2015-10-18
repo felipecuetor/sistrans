@@ -18,8 +18,8 @@ import edu.uniandes.domain.Administrador;
 import edu.uniandes.domain.Usuario;
 
 public class ConectionMYSQLAdministradorDAO {
-	private String	usuario		= "ISIS2304331520";
-	private String	password	= "4XtBpDKg3P7M";
+	private String	usuario		= "ISIS2304091520";
+	private String	password	= "cAeZtjShc2jP";
 	private String	url			= "jdbc:oracle:thin:@fn3.oracle.virtual.uniandes.edu.co:1521:prod";
 
 	public void ejecutarQuery(String query) throws SQLException {
