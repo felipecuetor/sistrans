@@ -91,9 +91,11 @@ public class CargarDatos {
 			codigoPostal = sheet.getCell(j, i).getContents();
 			j = 0;
 
+			String tipoPersona = "Natural";
+			
 			Usuario u = new Usuario(usuario, nombre, cedula, tipoCedula,
 					Integer.parseInt(cargo), nacionalidad, direccionFisica,
-					email, telefono, ciudad, departamento, codigoPostal);
+					email, telefono, ciudad, departamento, codigoPostal, tipoPersona);
 
 			try {
 				admin.registrarUsuario(u, admin.getCargo());

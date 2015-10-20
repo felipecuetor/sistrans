@@ -22,6 +22,7 @@ public class Usuario {
 	private String ciudad;
 	private String departamento;
 	private String codigoPostal;
+	private String tipoPersona;
 	private ArrayList<Cuenta> cuentas;
 	private static int ADMINISTRADOR = 0;
 	private static int GERENTE_GENERAL = 1;
@@ -32,7 +33,7 @@ public class Usuario {
 	public Usuario(String usuario, String nombre, String cedula,
 			String tipoCedula, int cargo, String nacionalidad,
 			String direccionFisica, String email, String telefono,
-			String ciudad, String departamento, String codigoPostal) {
+			String ciudad, String departamento, String codigoPostal, String tipoPersona) {
 		super();
 		this.usuario = usuario;
 		this.nombre = nombre;
@@ -219,6 +220,14 @@ public class Usuario {
 
 	public void setCuentas(ArrayList<Cuenta> cuentas) {
 		this.cuentas = cuentas;
+	}
+	
+	public String getTipoPersona() {
+		return tipoPersona;
+	}
+
+	public void setTipoPersona(String tipoPersona) {
+		this.tipoPersona = tipoPersona;
 	}
 
 

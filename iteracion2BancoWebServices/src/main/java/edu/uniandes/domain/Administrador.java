@@ -18,8 +18,8 @@ import edu.uniandes.data.Transaccion;
 public class Administrador extends Usuario {
 
 	public Administrador(String usuario, String nombre, String cedula, String tipoCedula, int cargo, String nacionalidad, String dirrecionFisica, String email, String telefono, String ciudad,
-			String departamento, String codigoPostal) {
-		super(usuario, nombre, cedula, tipoCedula, cargo, nacionalidad, dirrecionFisica, email, telefono, ciudad, departamento, codigoPostal);
+			String departamento, String codigoPostal, String tipoPersona) {
+		super(usuario, nombre, cedula, tipoCedula, cargo, nacionalidad, dirrecionFisica, email, telefono, ciudad, departamento, codigoPostal, tipoPersona);
 	}
 
 	public void registrarUsuario(Usuario usuario, int miCargo) throws SQLException {

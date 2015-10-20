@@ -100,11 +100,12 @@ public class ConectionMYSQLUsuarioDAO {
 						String ciudad = rs.getString("ciudad");
 						String departamento = rs.getString("departamento");
 						String codigoPostal = rs.getString("codigoPostal");
+						String tipoPersona = rs.getString("tipopersona");
 
 						Usuario usuarioNuevo = new Usuario(usuario, nombre,
 								cedula, tipoCedula, tryParser(cargo),
 								nacionalidad, direccionFisica, email, telefono,
-								ciudad, departamento, codigoPostal);
+								ciudad, departamento, codigoPostal, tipoPersona);
 						
 						System.out.println("Usuario:  "+usuarioNuevo.getUsuario());
 

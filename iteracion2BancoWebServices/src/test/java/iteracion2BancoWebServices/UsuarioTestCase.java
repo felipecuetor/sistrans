@@ -12,7 +12,7 @@ public class UsuarioTestCase extends TestCase{
 	
 	protected void setScenario()
 	{
-		user = new Usuario("fName", "fName", "fName", "fName", 0, "fName", "fName", "fName", "fName", "fName", "fName", "fName");
+		user = new Usuario("fName", "fName", "fName", "fName", 0, "fName", "fName", "fName", "fName", "fName", "fName", "fName", "fName");
 	}
 	
 	public void testConsultaCuenta()

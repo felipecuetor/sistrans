@@ -18,40 +18,53 @@ import edu.uniandes.domain.Usuario;
  */
 public class Login extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public Login() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#HttpServlet()
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public Login() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
+	protected void doGet(HttpServletRequest request,
+			HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 	}
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request,
+			HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		String nombreUsuario =  request.getParameter("usuario");
+		String nombreUsuario = request.getParameter("usuario");
 		ConectionMYSQLAdministradorDAO conection = new ConectionMYSQLAdministradorDAO();
 		PrintWriter out = response.getWriter();
-		
+
 		try {
-			Usuario usuario = conection.ejecutarQueryObtenerUsuario("SELECT * FROM USUARIO WHERE USUARIO.NOMBRE = " + "'" + nombreUsuario + "'");
-			
+			Usuario usuario = conection
+					.ejecutarQueryObtenerUsuario("SELECT * FROM USUARIO WHERE USUARIO.NOMBRE = "
+							+ "'" + nombreUsuario + "'");
+
 			if (usuario != null) {
 				int cargo = usuario.getCargo();
 				HttpSession session = request.getSession();
-			
+
 				if (cargo == 0 || cargo == 1 || cargo == 3 || cargo == 4) {
-					Administrador administrador = new Administrador(usuario.getUsuario(), usuario.getNombre(), usuario.getCedula(), usuario.getTipoCedula(), usuario.getCargo(), usuario.getNacionalidad(), usuario.getDireccionFisica(), usuario.getEmail(), usuario.getTelefono(), usuario.getCiudad(), usuario.getDepartamento(), usuario.getCodigoPostal());
+					Administrador administrador = new Administrador(
+							usuario.getUsuario(), usuario.getNombre(),
+							usuario.getCedula(), usuario.getTipoCedula(),
+							usuario.getCargo(), usuario.getNacionalidad(),
+							usuario.getDireccionFisica(), usuario.getEmail(),
+							usuario.getTelefono(), usuario.getCiudad(),
+							usuario.getDepartamento(),
+							usuario.getCodigoPostal(), usuario.getTipoPersona());
 					session.setAttribute("administrador", administrador);
 					session.setAttribute("usuario", null);
 					out.println("<html>");
@@ -71,15 +84,15 @@ public class Login extends HttpServlet {
 						out.println("<li><a href=\"RegistroInicio.html\"><button type = \"button\">Registro</button></a></li>");
 						out.println("<li><a href=\"#\"><button type = \"button\">#</button></a></li>");
 						out.println("<li class=\"horario\"><a href=\"ConsultarInicioAdministrador.html\"><button type = \"button\">Consultas</button></a></li>");
-					}else if (cargo == 1) {
+					} else if (cargo == 1) {
 						out.println("<li><a href=\"#\"><button type = \"button\">#</button></a></li>");
 						out.println("<li><a href=\"#\"><button type = \"button\">#</button></a></li>");
 						out.println("<li class=\"horario\"><a href=\"ConsultarInicioAdministrador.html\"><button type = \"button\">Consultas</button></a></li>");
-					}else if (cargo == 3) {
+					} else if (cargo == 3) {
 						out.println("<li><a href=\"RegistroInicioGerenteOficina.html\"><button type = \"button\">Registro</button></a></li>");
 						out.println("<li class=\"acerca\"><a href=\"CerrarInicio.html\" ><button type = \"button\">Finalizar Tramites</button></a></li>");
 						out.println("<li class=\"horario\"><a href=\"ConsultarInicioAdministrador.html\"><button type = \"button\">Consultas</button></a></li>");
-					}else if (cargo == 4) {
+					} else if (cargo == 4) {
 						out.println("<li><a href=\"RegistroInicioCajero.html\"><button type = \"button\">Registro</button></a></li>");
 						out.println("<li><a href=\"#\"><button type = \"button\">#</button></a></li>");
 						out.println("<li><a href=\"#\"><button type = \"button\">#</button></a></li>");
@@ -104,7 +117,7 @@ public class Login extends HttpServlet {
 					out.println("</form>");
 					out.println("</body>");
 					out.println("</html>");
-				}else if (cargo == 2) {
+				} else if (cargo == 2) {
 					session.setAttribute("usuario", usuario);
 					session.setAttribute("administrador", null);
 					out.println("<html>");
@@ -146,7 +159,7 @@ public class Login extends HttpServlet {
 				}
 			}
 		} catch (Exception e) {
-			
+
 			e.printStackTrace();
 			out.println("<html>");
 			out.println("<head>");

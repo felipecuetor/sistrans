@@ -39,6 +39,8 @@ public class PaginaDeInicioAdministrador extends HttpServlet {
 		// TODO Auto-generated method stub
 		String busqueda =  request.getParameter("buscar");
 		
+		
+
 		HttpSession session = request.getSession(true);
 		Administrador administrador = (Administrador) session.getAttribute("administrador");
 		administrador.hacerBusqueda();

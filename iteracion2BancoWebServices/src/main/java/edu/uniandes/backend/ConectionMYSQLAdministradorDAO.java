@@ -66,7 +66,7 @@ public class ConectionMYSQLAdministradorDAO {
 					if (rs.next()) {
 						Usuario usuario = new Usuario(rs.getString("usuario"), rs.getString("nombre"), rs.getString("cedula"), rs.getString("tipocedula"), rs.getInt("cargo"),
 								rs.getString("nacionalidad"), rs.getString("direccionFisica"), rs.getString("email"), rs.getString("telefono"), rs.getString("ciudad"), rs.getString("departamento"),
-								rs.getString("codigopostal"));
+								rs.getString("codigopostal"), rs.getString("tipopersona"));
 						return usuario;
 					}
 					return null;
@@ -83,7 +83,7 @@ public class ConectionMYSQLAdministradorDAO {
 					if (rs.next()) {
 						Administrador gerente = new Administrador(rs.getString("usuario"), rs.getString("nombre"), rs.getString("cedula"), rs.getString("tipocedula"), rs.getInt("cargo"),
 								rs.getString("nacionalidad"), rs.getString("direccionFisica"), rs.getString("email"), rs.getString("telefono"), rs.getString("ciudad"), rs.getString("departamento"),
-								rs.getString("codigopostal"));
+								rs.getString("codigopostal"), rs.getString("tipopersona"));
 						return gerente;
 					}
 					return null;
@@ -297,7 +297,7 @@ public class ConectionMYSQLAdministradorDAO {
 					while (rs.next()) {
 						Usuario usuario = new Usuario(rs.getString("usuario"), rs.getString("nombre"), rs.getString("cedula"), rs.getString("tipocedula"), rs.getInt("cargo"),
 								rs.getString("nacionalidad"), rs.getString("direccionFisica"), rs.getString("email"), rs.getString("telefono"), rs.getString("ciudad"), rs.getString("departamento"),
-								rs.getString("codigopostal"));
+								rs.getString("codigopostal"), rs.getString("tipopersona"));
 						usuarios.add(usuario);
 					}
 					return usuarios;
