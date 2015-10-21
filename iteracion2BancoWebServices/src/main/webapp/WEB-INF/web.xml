@@ -63,6 +63,12 @@
   	<servlet-name>RegistroTransaccion</servlet-name>
   	<servlet-class>edu.uniandes.servletsadministrador.RegistroTransaccion</servlet-class>
   </servlet>
+  
+  <servlet>
+  	<servlet-name>RegistroCuentaXCuenta</servlet-name>
+  	<servlet-class>edu.uniandes.servletsadministrador.RegistroCuentaXCuenta</servlet-class>
+  </servlet>
+  
   <servlet>
   	<servlet-name>ActualizarPrestamo</servlet-name>
   	<servlet-class>edu.uniandes.servletsadministrador.ActualizarPrestamo</servlet-class>
@@ -155,6 +161,12 @@
   	<servlet-name>RegistroTransaccion</servlet-name>
   	<url-pattern>/RegistroTransaccion</url-pattern>
   </servlet-mapping>
+  
+  <servlet-mapping>
+  	<servlet-name>RegistroCuentaXCuenta</servlet-name>
+  	<url-pattern>/RegistroCuentaXCuenta</url-pattern>
+  </servlet-mapping>
+  
   <servlet-mapping>
   	<servlet-name>ActualizarPrestamo</servlet-name>
   	<url-pattern>/ActualizarPrestamo</url-pattern>

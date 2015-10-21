@@ -24,6 +24,7 @@ public class Usuario {
 	private String codigoPostal;
 	private String tipoPersona;
 	private ArrayList<Cuenta> cuentas;
+	private ArrayList<Cuenta> cuentasEmpleados;
 	private static int ADMINISTRADOR = 0;
 	private static int GERENTE_GENERAL = 1;
 	private static int CLIENTE = 2;
@@ -229,6 +230,10 @@ public class Usuario {
 	public void setTipoPersona(String tipoPersona) {
 		this.tipoPersona = tipoPersona;
 	}
-
+	
+	public void agregarCuentaEmpleado(Cuenta empleado)
+	{
+		
+	}
 
 }

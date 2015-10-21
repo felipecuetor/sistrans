@@ -2,6 +2,7 @@ package edu.uniandes.servlets;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -10,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import edu.uniandes.backend.ConectionMYSQLAdministradorDAO;
+import edu.uniandes.data.Cuenta;
 import edu.uniandes.domain.Administrador;
 import edu.uniandes.domain.Usuario;
 
@@ -51,6 +53,15 @@ public class Login extends HttpServlet {
 			Usuario usuario = conection
 					.ejecutarQueryObtenerUsuario("SELECT * FROM USUARIO WHERE USUARIO.NOMBRE = "
 							+ "'" + nombreUsuario + "'");
+			
+//			ArrayList<Cuenta> cuentas = usuario.consultarCuentas("tipoCuenta", "Ahorros", "", "", null, null, "");
+//			cuentas.addAll(usuario.consultarCuentas("tipoCuentas", "Correinte", "", "", null, null, ""));
+//			
+//			usuario.setCuentas(cuentas);
+//			
+//			ArrayList<Cuenta> cuentasEmpleados = usuario.consultarCuentas();
+//			
+//			usuario.setCuentasEmpleados();
 
 			if (usuario != null) {
 				int cargo = usuario.getCargo();
@@ -84,18 +95,22 @@ public class Login extends HttpServlet {
 						out.println("<li><a href=\"RegistroInicio.html\"><button type = \"button\">Registro</button></a></li>");
 						out.println("<li><a href=\"#\"><button type = \"button\">#</button></a></li>");
 						out.println("<li class=\"horario\"><a href=\"ConsultarInicioAdministrador.html\"><button type = \"button\">Consultas</button></a></li>");
+						out.println("<li><a href=\"CuentaXCuenta.html\"><button type = \"button\">Vincular Cuentas</button></a></li>");
 					} else if (cargo == 1) {
 						out.println("<li><a href=\"#\"><button type = \"button\">#</button></a></li>");
 						out.println("<li><a href=\"#\"><button type = \"button\">#</button></a></li>");
 						out.println("<li class=\"horario\"><a href=\"ConsultarInicioAdministrador.html\"><button type = \"button\">Consultas</button></a></li>");
+						out.println("<li><a href=\"CuentaXCuenta.html\"><button type = \"button\">Vincular Cuentas</button></a></li>");
 					} else if (cargo == 3) {
 						out.println("<li><a href=\"RegistroInicioGerenteOficina.html\"><button type = \"button\">Registro</button></a></li>");
 						out.println("<li class=\"acerca\"><a href=\"CerrarInicio.html\" ><button type = \"button\">Finalizar Tramites</button></a></li>");
 						out.println("<li class=\"horario\"><a href=\"ConsultarInicioAdministrador.html\"><button type = \"button\">Consultas</button></a></li>");
+						out.println("<li><a href=\"CuentaXCuenta.html\"><button type = \"button\">Vincular Cuentas</button></a></li>");
 					} else if (cargo == 4) {
 						out.println("<li><a href=\"RegistroInicioCajero.html\"><button type = \"button\">Registro</button></a></li>");
 						out.println("<li><a href=\"#\"><button type = \"button\">#</button></a></li>");
 						out.println("<li><a href=\"#\"><button type = \"button\">#</button></a></li>");
+						out.println("<li><a href=\"CuentaXCuenta.html\"><button type = \"button\">Vincular Cuentas</button></a></li>");
 					}
 					out.println("<li class=\"Salir\"><a href=\"Inicio.html\"><button type = \"button\">Salir</button></a></li>");
 					out.println("</ul>");
