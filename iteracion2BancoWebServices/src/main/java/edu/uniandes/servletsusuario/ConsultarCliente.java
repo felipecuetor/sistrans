@@ -13,8 +13,8 @@ import javax.servlet.http.HttpSession;
 import edu.uniandes.data.Cuenta;
 import edu.uniandes.data.Date;
 import edu.uniandes.data.Transaccion;
-import edu.uniandes.domain.Administrador;
-import edu.uniandes.domain.Usuario;
+import edu.uniandes.fachada.FachadaAdministrador;
+import edu.uniandes.fachada.FachadaUsuario;
 
 /**
  * Servlet implementation class ConsultarCliente
@@ -52,9 +52,9 @@ public class ConsultarCliente extends HttpServlet {
 		String ordenamiento = request.getParameter("ordenamiento");
 
 		HttpSession session = request.getSession(true);
-		Administrador administrador = (Administrador) session.getAttribute("administrador");
-		Usuario usuario = (Usuario) session.getAttribute("usuario");
-		Usuario usuarioPrincipal = null;
+		FachadaAdministrador administrador = (FachadaAdministrador) session.getAttribute("administrador");
+		FachadaUsuario usuario = (FachadaUsuario) session.getAttribute("usuario");
+		FachadaUsuario usuarioPrincipal = null;
 		boolean isUsuario = false;
 		if (administrador == null) {
 			usuarioPrincipal = usuario;
@@ -68,7 +68,7 @@ public class ConsultarCliente extends HttpServlet {
 		try {
 			System.out.println("ID: " + usuarioPrincipal.getUsuario() + " Cargo: " + usuarioPrincipal.getCargo());
 			
-			ArrayList<Usuario> clientes = usuarioPrincipal.consultarCliente(id, tipoOrdenamiento, fechaInicio, fechaFinal, saldo, valorInicial, valorFinal, ordenamiento, usuarioPrincipal);
+			ArrayList<FachadaUsuario> clientes = usuarioPrincipal.consultarCliente(id, tipoOrdenamiento, fechaInicio, fechaFinal, saldo, valorInicial, valorFinal, ordenamiento, usuarioPrincipal);
 			System.out.println(clientes.size());
 			
 			out.println("<html>");
@@ -129,7 +129,7 @@ public class ConsultarCliente extends HttpServlet {
 				out.println("<p> No se encontro Ninguna cliente<p>");
 			}else {
 				for (int i = 0; i < clientes.size(); i++) {
-					Usuario cliente = clientes.get(i);
+					FachadaUsuario cliente = clientes.get(i);
 					out.println("<p> Usuario: "+ cliente.getUsuario() + " Nombre: "+ cliente.getNombre() +  " Tipo De Cedula: "+ cliente.getTipoCedula() + " Cedula: "+ cliente.getCedula() + " Cargo: " + cliente.getCargo() + " Nacionalidad: "+ cliente.getNacionalidad() + " Dirrecion Fisica: "+ cliente.getDireccionFisica()	+ " Email: "+ cliente.getEmail() + " Telefono: "+ cliente.getTelefono()	+ " Ciudad: "+ cliente.getCiudad() 	+ " Departamento: "+ cliente.getDepartamento()	+ " Codigo Postal: "+ cliente.getCodigoPostal() + "</p>");
 					ArrayList<Cuenta> cuentas = cliente.getCuentas();
 					System.out.println("tamaño de la cuenta" + cuentas.size());

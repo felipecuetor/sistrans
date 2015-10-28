@@ -12,7 +12,7 @@ import javax.servlet.http.HttpSession;
 
 import edu.uniandes.data.Cuenta;
 import edu.uniandes.data.Oficina;
-import edu.uniandes.domain.Administrador;
+import edu.uniandes.fachada.FachadaAdministrador;
 
 /**
  * Servlet implementation class RegistrarCuenta
@@ -50,7 +50,7 @@ public class RegistrarCuenta extends HttpServlet {
 		String usuario_id = request.getParameter("usuario_ID");
 
 		HttpSession session = request.getSession(true);
-		Administrador administrador = (Administrador) session.getAttribute("administrador");
+		FachadaAdministrador administrador = (FachadaAdministrador) session.getAttribute("administrador");
 
 		PrintWriter out = response.getWriter();
 		System.out.println("Inicio");

@@ -13,7 +13,7 @@ import javax.servlet.http.HttpSession;
 import edu.uniandes.data.Cuenta;
 import edu.uniandes.data.Date;
 import edu.uniandes.data.Transaccion;
-import edu.uniandes.domain.Administrador;
+import edu.uniandes.fachada.FachadaAdministrador;
 
 /**
  * Servlet implementation class RegistroTransaccion
@@ -64,7 +64,7 @@ public class RegistroTransaccion extends HttpServlet {
 		int saldoPendiente = tryParser(request.getParameter("saldoPendiente"));
 
 		HttpSession session = request.getSession(true);
-		Administrador administrador = (Administrador) session
+		FachadaAdministrador administrador = (FachadaAdministrador) session
 				.getAttribute("administrador");
 
 		PrintWriter out = response.getWriter();

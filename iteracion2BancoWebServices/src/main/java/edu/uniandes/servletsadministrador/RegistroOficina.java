@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import edu.uniandes.data.Oficina;
-import edu.uniandes.domain.Administrador;
+import edu.uniandes.fachada.FachadaAdministrador;
 
 /**
  * Servlet implementation class RegistroOficina
@@ -45,7 +45,7 @@ public class RegistroOficina extends HttpServlet {
 
 
 		HttpSession session = request.getSession(true);
-		Administrador administrador = (Administrador) session.getAttribute("administrador");
+		FachadaAdministrador administrador = (FachadaAdministrador) session.getAttribute("administrador");
 
 		
 		
@@ -54,7 +54,7 @@ public class RegistroOficina extends HttpServlet {
 
 		try {
 			System.out.println("Pregunto por el gerente");
-			Administrador gerente = administrador.obtenerGerente(stringGerente);
+			FachadaAdministrador gerente = administrador.obtenerGerente(stringGerente);
 			System.out.println("Tengo al gerente");
 			
 			Oficina nuevaOficina = new Oficina(nombre, direccion, telefono, gerente);

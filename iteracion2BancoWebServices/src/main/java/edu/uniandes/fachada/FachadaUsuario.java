@@ -1,14 +1,14 @@
-package edu.uniandes.domain;
+package edu.uniandes.fachada;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import edu.uniandes.backend.ConectionMYSQLAdministradorDAO;
-import edu.uniandes.backend.ConectionMYSQLUsuarioDAO;
+import edu.uniandes.dao.ConectionMYSQLAdministradorDAO;
+import edu.uniandes.dao.ConectionMYSQLUsuarioDAO;
 import edu.uniandes.data.Cuenta;
 import edu.uniandes.data.Date;
 
-public class Usuario {
+public class FachadaUsuario {
 
 	private String usuario;
 	private String nombre;
@@ -31,7 +31,7 @@ public class Usuario {
 	private static int GERENTE_OFICINA = 3;
 	private static int CAJERO = 4;
 
-	public Usuario(String usuario, String nombre, String cedula,
+	public FachadaUsuario(String usuario, String nombre, String cedula,
 			String tipoCedula, int cargo, String nacionalidad,
 			String direccionFisica, String email, String telefono,
 			String ciudad, String departamento, String codigoPostal, String tipoPersona) {
@@ -51,9 +51,9 @@ public class Usuario {
 		this.cuentas = new ArrayList<Cuenta>();
 	}
 
-	public Usuario darUsuarioPorEmail(String email) throws Exception {
+	public FachadaUsuario darUsuarioPorEmail(String email) throws Exception {
 		ConectionMYSQLAdministradorDAO conection = new ConectionMYSQLAdministradorDAO();
-		Usuario usuario = conection
+		FachadaUsuario usuario = conection
 				.ejecutarQueryObtenerUsuario("SELECT * FROM USUARIO WHERE USUARIO.EMAIL = "
 						+ "'" + email + "'");
 
@@ -71,7 +71,7 @@ public class Usuario {
 	// ordenamiento
 	public ArrayList<Cuenta> consultarCuentas(String tipoBusqueda,
 			String tipoCuenta, String saldo, String ordenamiento, Date fecha,
-			Usuario usuarioPrincipal, String idUsuario) throws SQLException {
+			FachadaUsuario usuarioPrincipal, String idUsuario) throws SQLException {
 		ConectionMYSQLUsuarioDAO conection = new ConectionMYSQLUsuarioDAO();
 		String query = "SELECT ID,SALDO,TIPOCUENTA,MONEDA_ID,ESTACERRADA,OFICINA_ID FROM USUARIOXCUENTA INNER JOIN ";
 
@@ -123,7 +123,7 @@ public class Usuario {
 		return cuentas;
 	}
 
-	public ArrayList<Usuario> consultarCliente(String id, String tipoOrdenamiento, Date fechaInicio, Date fechaFinal, String saldo, String valorInicial, String valorFinal, String ordenamiento, Usuario usuarioPrincipal) throws SQLException {
+	public ArrayList<FachadaUsuario> consultarCliente(String id, String tipoOrdenamiento, Date fechaInicio, Date fechaFinal, String saldo, String valorInicial, String valorFinal, String ordenamiento, FachadaUsuario usuarioPrincipal) throws SQLException {
 		int cargo = usuarioPrincipal.getCargo();
 		System.out.println("Incio busqueda");
 		if(cargo == 2){
@@ -143,7 +143,7 @@ public class Usuario {
 		query+=" ORDER BY CUENTA.ID";
 		
 		System.out.println("Query");
-		ArrayList<Usuario> usuarios = conection.ejecutarQueryObtenerCliente(query);
+		ArrayList<FachadaUsuario> usuarios = conection.ejecutarQueryObtenerCliente(query);
 		return usuarios;
 	}
 

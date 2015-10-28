@@ -1,10 +1,10 @@
-package edu.uniandes.domain;
+package edu.uniandes.fachada;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Iterator;
 
-import edu.uniandes.backend.ConectionMYSQLAdministradorDAO;
+import edu.uniandes.dao.ConectionMYSQLAdministradorDAO;
 import edu.uniandes.data.Cuenta;
 import edu.uniandes.data.Date;
 import edu.uniandes.data.Oficina;
@@ -13,9 +13,9 @@ import edu.uniandes.data.Requerimiento3;
 import edu.uniandes.data.Transaccion;
 import edu.uniandes.data.Vinculo;
 
-public class Administrador extends Usuario {
+public class FachadaAdministrador extends FachadaUsuario {
 
-	public Administrador(String usuario, String nombre, String cedula,
+	public FachadaAdministrador(String usuario, String nombre, String cedula,
 			String tipoCedula, int cargo, String nacionalidad,
 			String dirrecionFisica, String email, String telefono,
 			String ciudad, String departamento, String codigoPostal,
@@ -25,7 +25,7 @@ public class Administrador extends Usuario {
 				codigoPostal, tipoPersona);
 	}
 
-	public void registrarUsuario(Usuario usuario, int miCargo)
+	public void registrarUsuario(FachadaUsuario usuario, int miCargo)
 			throws SQLException {
 		int cargoUsuario = usuario.getCargo();
 		if (miCargo == 0) {
@@ -49,7 +49,7 @@ public class Administrador extends Usuario {
 		}
 	}
 
-	private String agregarValoresUsuario(Usuario usuario) {
+	private String agregarValoresUsuario(FachadaUsuario usuario) {
 		String entrega = "'" + usuario.getUsuario() + "', '"
 				+ usuario.getNombre() + "', '" + usuario.getCedula() + "', '"
 				+ usuario.getTipoCedula() + "', " + usuario.getCargo() + ", '"
@@ -93,10 +93,10 @@ public class Administrador extends Usuario {
 		return entrega;
 	}
 
-	public Administrador obtenerGerente(String gerente) throws SQLException {
+	public FachadaAdministrador obtenerGerente(String gerente) throws SQLException {
 		System.out.println("algo");
 		ConectionMYSQLAdministradorDAO conecion = new ConectionMYSQLAdministradorDAO();
-		Administrador administrador = conecion
+		FachadaAdministrador administrador = conecion
 				.ejecutarQueryObtenerAdministrador("SELECT * FROM USUARIO WHERE USUARIO.USUARIO = '"
 						+ gerente + "' AND USUARIO.CARGO = 1");
 		return administrador;
@@ -361,7 +361,7 @@ public class Administrador extends Usuario {
 	// Solo el gerente general y el gerente oficina puede hacer esto
 	// ordenado por el numero de veces realizada
 	public ArrayList<Requerimiento3> consultarOperacionMayorMovimiento(
-			Date fechaInicio, Date fechaFinal, Usuario usuarioPrincipal)
+			Date fechaInicio, Date fechaFinal, FachadaUsuario usuarioPrincipal)
 			throws SQLException {
 		// TODO Auto-generated method stub
 		if (usuarioPrincipal.getCargo() == 1
@@ -398,12 +398,12 @@ public class Administrador extends Usuario {
 		}
 	}
 
-	public ArrayList<Usuario> consultarUsuarioMasActivo(String tipoOperacion,
-			String tipoBusqueda, int monto, Usuario usuarioPrincipal)
+	public ArrayList<FachadaUsuario> consultarUsuarioMasActivo(String tipoOperacion,
+			String tipoBusqueda, int monto, FachadaUsuario usuarioPrincipal)
 			throws SQLException {
 		// TODO Auto-generated method stub
 		ConectionMYSQLAdministradorDAO conection = new ConectionMYSQLAdministradorDAO();
-		ArrayList<Usuario> usuarios = new ArrayList<Usuario>();
+		ArrayList<FachadaUsuario> usuarios = new ArrayList<FachadaUsuario>();
 		String query = "SELECT USUARIO.*"
 				+ " FROM (((USUARIO INNER JOIN USUARIOXCUENTA ON USUARIO.USUARIO = USUARIOXCUENTA.USUARIO_ID)"
 				+ " INNER JOIN CUENTA ON USUARIOxCUENTA.CUENTA_ID = CUENTA.ID)"
@@ -437,12 +437,12 @@ public class Administrador extends Usuario {
 		conection.ejecutarQueryRegistrarCuentaXCuenta(query);
 	}
 	
-	private Usuario obtenerUsuario(String stringUsuario) throws Exception {
+	private FachadaUsuario obtenerUsuario(String stringUsuario) throws Exception {
 		ConectionMYSQLAdministradorDAO conection = new ConectionMYSQLAdministradorDAO();
 		
 		String query = "SELECT USUARIO.* FROM USUARIO WHERE USUARIO.USUARIO = '"+ stringUsuario + "'";
 		
-		Usuario usuario = conection.ejecutarQueryObtenerUsuario(query);
+		FachadaUsuario usuario = conection.ejecutarQueryObtenerUsuario(query);
 		
 		return usuario;
 	}

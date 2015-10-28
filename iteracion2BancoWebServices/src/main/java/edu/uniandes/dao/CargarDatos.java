@@ -1,4 +1,4 @@
-package edu.uniandes.backend;
+package edu.uniandes.dao;
 
 import java.io.File;
 
@@ -7,18 +7,18 @@ import edu.uniandes.data.Date;
 import edu.uniandes.data.Oficina;
 import edu.uniandes.data.PuntoDeAtencion;
 import edu.uniandes.data.Transaccion;
-import edu.uniandes.domain.Administrador;
-import edu.uniandes.domain.Usuario;
+import edu.uniandes.fachada.FachadaAdministrador;
+import edu.uniandes.fachada.FachadaUsuario;
 import jxl.*;
 
 public class CargarDatos {
 	private Workbook workbook;
 	private Sheet sheet;
 	private int numSheet;
-	private Administrador admin;
+	private FachadaAdministrador admin;
 
 	// Constructor
-	public CargarDatos(Administrador administrador) {
+	public CargarDatos(FachadaAdministrador administrador) {
 		admin = administrador;
 
 		System.out.println(admin.getCedula()+admin.getNombre());
@@ -93,7 +93,7 @@ public class CargarDatos {
 
 			String tipoPersona = "Natural";
 			
-			Usuario u = new Usuario(usuario, nombre, cedula, tipoCedula,
+			FachadaUsuario u = new FachadaUsuario(usuario, nombre, cedula, tipoCedula,
 					Integer.parseInt(cargo), nacionalidad, direccionFisica,
 					email, telefono, ciudad, departamento, codigoPostal, tipoPersona);
 

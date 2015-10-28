@@ -12,7 +12,7 @@ import javax.servlet.http.HttpSession;
 
 import edu.uniandes.data.Oficina;
 import edu.uniandes.data.PuntoDeAtencion;
-import edu.uniandes.domain.Administrador;
+import edu.uniandes.fachada.FachadaAdministrador;
 
 /**
  * Servlet implementation class RegistroPuntoDeAtencion
@@ -45,7 +45,7 @@ public class RegistroPuntoDeAtencion extends HttpServlet {
 
 
 		HttpSession session = request.getSession(true);
-		Administrador administrador = (Administrador) session.getAttribute("administrador");
+		FachadaAdministrador administrador = (FachadaAdministrador) session.getAttribute("administrador");
 		
 		PrintWriter out = response.getWriter();
 		System.out.println("Inicio");
