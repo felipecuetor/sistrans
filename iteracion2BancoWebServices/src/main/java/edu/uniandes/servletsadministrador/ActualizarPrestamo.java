@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import edu.uniandes.fachada.FachadaAdministrador;
+import edu.uniandes.domain.Administrador;
 
 /**
  * Servlet implementation class ActualizarPrestamo
@@ -43,7 +43,7 @@ public class ActualizarPrestamo extends HttpServlet {
 
 
 		HttpSession session = request.getSession(true);
-		FachadaAdministrador administrador = (FachadaAdministrador) session.getAttribute("administrador");
+		Administrador administrador = (Administrador) session.getAttribute("administrador");
 		HttpSession session1 = request.getSession();
 		session1.setAttribute("administrador", administrador);
 		

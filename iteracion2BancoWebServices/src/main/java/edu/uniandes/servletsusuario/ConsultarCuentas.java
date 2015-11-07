@@ -12,8 +12,8 @@ import javax.servlet.http.HttpSession;
 
 import edu.uniandes.data.Cuenta;
 import edu.uniandes.data.Date;
-import edu.uniandes.fachada.FachadaAdministrador;
-import edu.uniandes.fachada.FachadaUsuario;
+import edu.uniandes.domain.Administrador;
+import edu.uniandes.domain.Usuario;
 
 /**
  * Servlet implementation class ConsultarCuentas
@@ -49,9 +49,9 @@ public class ConsultarCuentas extends HttpServlet {
 		String ordenamiento = request.getParameter("ordenamiento");
 
 		HttpSession session = request.getSession(true);
-		FachadaAdministrador administrador = (FachadaAdministrador) session.getAttribute("administrador");
-		FachadaUsuario usuario = (FachadaUsuario) session.getAttribute("usuario");
-		FachadaUsuario usuarioPrincipal = null;
+		Administrador administrador = (Administrador) session.getAttribute("administrador");
+		Usuario usuario = (Usuario) session.getAttribute("usuario");
+		Usuario usuarioPrincipal = null;
 		boolean isUsuario = false;
 		if (administrador == null) {
 			usuarioPrincipal = usuario;

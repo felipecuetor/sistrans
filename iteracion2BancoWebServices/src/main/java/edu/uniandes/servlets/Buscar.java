@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import edu.uniandes.fachada.FachadaUsuario;
+import edu.uniandes.domain.Usuario;
 
 /**
  * Servlet implementation class Buscar
@@ -41,7 +41,7 @@ public class Buscar extends HttpServlet {
 		String busqueda =  request.getParameter("buscar");
 		
 		HttpSession session = request.getSession(true);
-		FachadaUsuario usuario = (FachadaUsuario) session.getAttribute("usuario");
+		Usuario usuario = (Usuario) session.getAttribute("usuario");
 		
 		usuario.hacerBusqueda();
 		

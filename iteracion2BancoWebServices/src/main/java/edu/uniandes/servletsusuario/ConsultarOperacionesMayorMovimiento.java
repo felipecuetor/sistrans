@@ -12,7 +12,7 @@ import javax.servlet.http.HttpSession;
 
 import edu.uniandes.data.Date;
 import edu.uniandes.data.Requerimiento3;
-import edu.uniandes.fachada.FachadaAdministrador;
+import edu.uniandes.domain.Administrador;
 
 /**
  * Servlet implementation class ConsultarOperacionesMayorMovimiento
@@ -43,7 +43,7 @@ public class ConsultarOperacionesMayorMovimiento extends HttpServlet {
 		Date fechaFinal = new Date(request.getParameter("diaFinal"), request.getParameter("mesFinal"), request.getParameter("yearFinal"));
 		
 		HttpSession session = request.getSession(true);
-		FachadaAdministrador administrador = (FachadaAdministrador) session.getAttribute("administrador");
+		Administrador administrador = (Administrador) session.getAttribute("administrador");
 		
 		
 		System.out.println("ID: " + administrador.getUsuario() + " Cargo: " + administrador.getCargo());

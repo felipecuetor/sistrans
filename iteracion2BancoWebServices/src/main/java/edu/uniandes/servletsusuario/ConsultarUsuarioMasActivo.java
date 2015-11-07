@@ -10,8 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import edu.uniandes.fachada.FachadaAdministrador;
-import edu.uniandes.fachada.FachadaUsuario;
+import edu.uniandes.domain.Administrador;
+import edu.uniandes.domain.Usuario;
 
 /**
  * Servlet implementation class ConsultarUsuarioMasActivo
@@ -43,14 +43,14 @@ public class ConsultarUsuarioMasActivo extends HttpServlet {
 		int monto = tryParser(request.getParameter("monto"));	
 		
 		HttpSession session = request.getSession(true);
-		FachadaAdministrador administrador = (FachadaAdministrador) session.getAttribute("administrador");
+		Administrador administrador = (Administrador) session.getAttribute("administrador");
 		
 		System.out.println("ID: " + administrador.getUsuario() + " Cargo: " + administrador.getCargo());
 		PrintWriter out = response.getWriter();
 		
 		try {
 			
-			ArrayList<FachadaUsuario> usuarios = administrador.consultarUsuarioMasActivo(tipoOperacion, tipoBusqueda, monto, administrador);
+			ArrayList<Usuario> usuarios = administrador.consultarUsuarioMasActivo(tipoOperacion, tipoBusqueda, monto, administrador);
 			
 			out.println("<html>");
 			out.println("<head>");
@@ -97,7 +97,7 @@ public class ConsultarUsuarioMasActivo extends HttpServlet {
 			out.println("<h2>" + "El resultado es: </h2>");
 			out.println("<br>");
 			for (int i = 0; i < usuarios.size(); i++) {
-				FachadaUsuario usuario = usuarios.get(i);
+				Usuario usuario = usuarios.get(i);
 				out.println("<p> Usuario: "+ usuario.getUsuario() 
 						+ " Nombre: "+ usuario.getNombre() 
 						+  " Tipo De Cedula: "+ usuario.getTipoCedula()

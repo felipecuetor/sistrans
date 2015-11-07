@@ -2,17 +2,17 @@ package edu.uniandes.data;
 
 import java.util.ArrayList;
 
-import edu.uniandes.fachada.FachadaAdministrador;
+import edu.uniandes.domain.Administrador;
 
 public class Oficina {
 	
 	private String nombre;
 	private String direccion;
 	private String telefono;
-	private FachadaAdministrador gerente;
+	private Administrador gerente;
 	ArrayList<Cuenta> cuentas;
 	
-	public Oficina(String nombre, String direccion, String telefono, FachadaAdministrador gerente) {
+	public Oficina(String nombre, String direccion, String telefono, Administrador gerente) {
 		super();
 		this.nombre = nombre;
 		this.direccion = direccion;
@@ -30,7 +30,7 @@ public class Oficina {
 	public String getTelefono() {
 		return telefono;
 	}
-	public FachadaAdministrador getGerente() {
+	public Administrador getGerente() {
 		return gerente;
 	}
 

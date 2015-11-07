@@ -10,10 +10,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import edu.uniandes.dao.ConectionMYSQLAdministradorDAO;
+import edu.uniandes.backend.ConectionMYSQLAdministradorDAO;
 import edu.uniandes.data.Cuenta;
-import edu.uniandes.fachada.FachadaAdministrador;
-import edu.uniandes.fachada.FachadaUsuario;
+import edu.uniandes.domain.Administrador;
+import edu.uniandes.domain.Usuario;
 
 /**
  * Servlet implementation class Login
@@ -50,7 +50,7 @@ public class Login extends HttpServlet {
 		PrintWriter out = response.getWriter();
 
 		try {
-			FachadaUsuario usuario = conection
+			Usuario usuario = conection
 					.ejecutarQueryObtenerUsuario("SELECT * FROM USUARIO WHERE USUARIO.NOMBRE = "
 							+ "'" + nombreUsuario + "'");
 			
@@ -68,7 +68,7 @@ public class Login extends HttpServlet {
 				HttpSession session = request.getSession();
 
 				if (cargo == 0 || cargo == 1 || cargo == 3 || cargo == 4) {
-					FachadaAdministrador administrador = new FachadaAdministrador(
+					Administrador administrador = new Administrador(
 							usuario.getUsuario(), usuario.getNombre(),
 							usuario.getCedula(), usuario.getTipoCedula(),
 							usuario.getCargo(), usuario.getNacionalidad(),

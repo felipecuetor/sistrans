@@ -3,16 +3,16 @@ package iteracion2BancoWebServices;
 import java.util.ArrayList;
 
 import edu.uniandes.data.Cuenta;
-import edu.uniandes.fachada.FachadaUsuario;
+import edu.uniandes.domain.Usuario;
 import junit.framework.TestCase;
 
 public class UsuarioTestCase extends TestCase{
 
-	private FachadaUsuario user;
+	private Usuario user;
 	
 	protected void setScenario()
 	{
-		user = new FachadaUsuario("fName", "fName", "fName", "fName", 0, "fName", "fName", "fName", "fName", "fName", "fName", "fName", "fName");
+		user = new Usuario("fName", "fName", "fName", "fName", 0, "fName", "fName", "fName", "fName", "fName", "fName", "fName", "fName");
 	}
 	
 	public void testConsultaCuenta()

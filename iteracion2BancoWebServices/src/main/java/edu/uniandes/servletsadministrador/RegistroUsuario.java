@@ -9,8 +9,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import edu.uniandes.fachada.FachadaAdministrador;
-import edu.uniandes.fachada.FachadaUsuario;
+import edu.uniandes.domain.Administrador;
+import edu.uniandes.domain.Usuario;
 
 /**
  * Servlet implementation class Registro
@@ -68,12 +68,12 @@ public class RegistroUsuario extends HttpServlet {
 		String departamento = request.getParameter("departamento");
 		String codigoPostal = request.getParameter("codigoPostal");
 		String tipoPersona = request.getParameter("tipopersona");
-		FachadaUsuario nuevoUsuario = new FachadaUsuario(usuario, nombre, cedula, tipoCedula,
+		Usuario nuevoUsuario = new Usuario(usuario, nombre, cedula, tipoCedula,
 				cargo, nacionalidad, direccionFisica, direccionElectronica,
 				telefono, ciudad, departamento, codigoPostal, tipoPersona);
 
 		HttpSession session = request.getSession(true);
-		FachadaAdministrador administrador = (FachadaAdministrador) session
+		Administrador administrador = (Administrador) session
 				.getAttribute("administrador");
 		PrintWriter out = response.getWriter();
 

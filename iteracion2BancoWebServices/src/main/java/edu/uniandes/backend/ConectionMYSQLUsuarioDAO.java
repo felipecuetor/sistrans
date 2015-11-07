@@ -1,4 +1,4 @@
-package edu.uniandes.dao;
+package edu.uniandes.backend;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -12,7 +12,7 @@ import edu.uniandes.data.CuentaAhorro;
 import edu.uniandes.data.CuentaCorriente;
 import edu.uniandes.data.Oficina;
 import edu.uniandes.data.Transaccion;
-import edu.uniandes.fachada.FachadaUsuario;
+import edu.uniandes.domain.Usuario;
 
 public class ConectionMYSQLUsuarioDAO {
 	private String usuario = "ISIS2304091520";
@@ -76,7 +76,7 @@ public class ConectionMYSQLUsuarioDAO {
 	}
 
 	@SuppressWarnings("deprecation")
-	public ArrayList<FachadaUsuario> ejecutarQueryObtenerCliente(String query)
+	public ArrayList<Usuario> ejecutarQueryObtenerCliente(String query)
 			throws SQLException {
 		System.out.println(query);
 		try (Connection con = getConnection()) {
@@ -84,7 +84,7 @@ public class ConectionMYSQLUsuarioDAO {
 				try (ResultSet rs = prep.executeQuery()) {
 					System.out.println("Coneccion sec");
 					ConectionMYSQLAdministradorDAO conection = new ConectionMYSQLAdministradorDAO();
-					ArrayList<FachadaUsuario> usuarios = new ArrayList<FachadaUsuario>();
+					ArrayList<Usuario> usuarios = new ArrayList<Usuario>();
 					if (rs.next()) {
 
 						String usuario = rs.getString("usuario");
@@ -102,7 +102,7 @@ public class ConectionMYSQLUsuarioDAO {
 						String codigoPostal = rs.getString("codigoPostal");
 						String tipoPersona = rs.getString("tipopersona");
 
-						FachadaUsuario usuarioNuevo = new FachadaUsuario(usuario, nombre,
+						Usuario usuarioNuevo = new Usuario(usuario, nombre,
 								cedula, tipoCedula, tryParser(cargo),
 								nacionalidad, direccionFisica, email, telefono,
 								ciudad, departamento, codigoPostal, tipoPersona);
@@ -307,7 +307,7 @@ public class ConectionMYSQLUsuarioDAO {
 						}
 						cuentasArray.add(cuentaNueva);
 						usuarioNuevo.setCuentas(cuentasArray);
-						ArrayList<FachadaUsuario> resp = new ArrayList<FachadaUsuario>();
+						ArrayList<Usuario> resp = new ArrayList<Usuario>();
 						resp.add(usuarioNuevo);
 						System.out.println("respondiendo");
 						return resp;

@@ -1,4 +1,4 @@
-package edu.uniandes.dao;
+package edu.uniandes.backend;
 
 import java.sql.Connection;
 import java.sql.Date;
@@ -15,8 +15,8 @@ import edu.uniandes.data.Oficina;
 import edu.uniandes.data.Requerimiento3;
 import edu.uniandes.data.Transaccion;
 import edu.uniandes.data.Vinculo;
-import edu.uniandes.fachada.FachadaAdministrador;
-import edu.uniandes.fachada.FachadaUsuario;
+import edu.uniandes.domain.Administrador;
+import edu.uniandes.domain.Usuario;
 
 public class ConectionMYSQLAdministradorDAO {
 	private String usuario = "ISIS2304091520";
@@ -59,14 +59,14 @@ public class ConectionMYSQLAdministradorDAO {
 		}
 	}
 
-	public FachadaUsuario ejecutarQueryObtenerUsuario(String query)
+	public Usuario ejecutarQueryObtenerUsuario(String query)
 			throws SQLException {
 		System.out.println(query);
 		try (Connection con = getConnection()) {
 			try (PreparedStatement prep = con.prepareStatement(query)) {
 				try (ResultSet rs = prep.executeQuery()) {
 					if (rs.next()) {
-						FachadaUsuario usuario = new FachadaUsuario(rs.getString("usuario"),
+						Usuario usuario = new Usuario(rs.getString("usuario"),
 								rs.getString("nombre"), rs.getString("cedula"),
 								rs.getString("tipocedula"), rs.getInt("cargo"),
 								rs.getString("nacionalidad"),
@@ -85,14 +85,14 @@ public class ConectionMYSQLAdministradorDAO {
 		}
 	}
 
-	public FachadaAdministrador ejecutarQueryObtenerAdministrador(String query)
+	public Administrador ejecutarQueryObtenerAdministrador(String query)
 			throws SQLException {
 		System.out.println(query);
 		try (Connection con = getConnection()) {
 			try (PreparedStatement prep = con.prepareStatement(query)) {
 				try (ResultSet rs = prep.executeQuery()) {
 					if (rs.next()) {
-						FachadaAdministrador gerente = new FachadaAdministrador(
+						Administrador gerente = new Administrador(
 								rs.getString("usuario"),
 								rs.getString("nombre"), rs.getString("cedula"),
 								rs.getString("tipocedula"), rs.getInt("cargo"),
@@ -132,7 +132,7 @@ public class ConectionMYSQLAdministradorDAO {
 					if (rs.next()) {
 						String nombreGerente = rs.getString("gerente_ID");
 						System.out.println("voy a pedir el gerente");
-						FachadaAdministrador gerente = this
+						Administrador gerente = this
 								.ejecutarQueryObtenerAdministrador("SELECT * FROM USUARIO WHERE USUARIO.USUARIO = '"
 										+ nombreGerente + "'");
 						System.out.println("tengo el gerente");
@@ -336,15 +336,15 @@ public class ConectionMYSQLAdministradorDAO {
 		}
 	}
 
-	public ArrayList<FachadaUsuario> ejecutarQueryConsultarUsuarioMasActivo(
+	public ArrayList<Usuario> ejecutarQueryConsultarUsuarioMasActivo(
 			String query) throws SQLException {
 		System.out.println(query);
 		try (Connection con = getConnection()) {
 			try (PreparedStatement prep = con.prepareStatement(query)) {
 				try (ResultSet rs = prep.executeQuery()) {
-					ArrayList<FachadaUsuario> usuarios = new ArrayList<FachadaUsuario>();
+					ArrayList<Usuario> usuarios = new ArrayList<Usuario>();
 					while (rs.next()) {
-						FachadaUsuario usuario = new FachadaUsuario(rs.getString("usuario"),
+						Usuario usuario = new Usuario(rs.getString("usuario"),
 								rs.getString("nombre"), rs.getString("cedula"),
 								rs.getString("tipocedula"), rs.getInt("cargo"),
 								rs.getString("nacionalidad"),

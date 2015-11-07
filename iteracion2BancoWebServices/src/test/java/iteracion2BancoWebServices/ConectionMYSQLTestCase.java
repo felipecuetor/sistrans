@@ -2,7 +2,7 @@ package iteracion2BancoWebServices;
 
 import java.sql.SQLException;
 
-import edu.uniandes.dao.ConectionMYSQLAdministradorDAO;
+import edu.uniandes.backend.ConectionMYSQLAdministradorDAO;
 import junit.framework.TestCase;
 
 public class ConectionMYSQLTestCase extends TestCase {
