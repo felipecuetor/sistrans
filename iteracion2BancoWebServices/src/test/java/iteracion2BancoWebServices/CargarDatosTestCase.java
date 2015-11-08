@@ -16,14 +16,14 @@ public class CargarDatosTestCase extends TestCase
 
 	public void testCargarDatos()
 	{		
-		admin = new Administrador("diego", "Diego Riveros", "95120607449", "Cedula", 0, "Colombia", "Calle 138#75-75", "diego@hotmail.com", "4662325", "Bogotá", "Cundinamarca", "11", "Natural");
+		admin = new Administrador("Felipe", "Felipe Cueto", "95120607449", "Cedula", 0, "Colombia", "Calle 129b#55-20", "f.cueto@hotmail.com", "4662325", "Bogotá", "Cundinamarca", "11", "Natural");
 		
 		CargarDatos datos = new CargarDatos(admin);
 		
 		System.out.println("Usuario----------------------------------------------------------------");
 		datos.cargarUsuarios();
 		
-		admin = new Administrador("diego", "Diego Riveros", "95120607449", "Cedula", 1, "Colombia", "Calle 138#75-75", "diego@hotmail.com", "4662325", "Bogotá", "Cundinamarca", "11", "Natural");
+		admin = new Administrador("Felipe", "Felipe Cueto", "95120607449", "Cedula", 1, "Colombia", "Calle 129b#55-20", "f.cueto@hotmail.com", "4662325", "Bogotá", "Cundinamarca", "11", "Natural");
 		
 		System.out.println("Oficinas----------------------------------------------------------------");
 		datos.cargarOficinas();
