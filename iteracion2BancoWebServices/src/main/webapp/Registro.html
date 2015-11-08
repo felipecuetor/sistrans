@@ -1,0 +1,60 @@
+<html>
+<head>
+<title>Registro Usuario</title>
+<link rel="stylesheet" type="text/css" href="css/EstiloRegistro.css">
+<link href='http://fonts.googleapis.com/css?family=Pinyon+Script'
+	rel='stylesheet' type='text/css'>
+<link
+	href='http://fonts.googleapis.com/css?family=Roboto+Mono&subset=greek'
+	rel='stylesheet' type='text/css'>
+	<link href='http://fonts.googleapis.com/css?family=Time+News+Roman' rel='stylesheet' type='text/css'>
+</head>
+<body>
+	<form name="RegistroUsuario" action="RegistroUsuario" method="post">
+		<h1>Registro BancAndes</h1>
+		<ul>
+			<li><label>Usuario: </label> <input name="usuario" type="text"
+				max-length="20" placeholder=" Su usuario"></li>
+			<li><label>Nombre: </label> <input name="nombre" type="text"
+				max-length="20" placeholder=" Su nombre"></li>
+			<li><label>Tipo de identificaci&oacuten: </label> <SELECT
+				name="tipoCedula">
+					<OPTION value="cedula">Cedula</OPTION>
+					<OPTION value="cedulaExtranjera">Cedula Extranjera</OPTION>
+					<OPTION value="pasaporte">Pasaporte</OPTION>
+					<OPTION value="nit">NIT</OPTION>
+			</SELECT></li>
+			<li><label>Cedula:</label> <input name="cedula" type="text"
+				max-length="20" placeholder=" Numero"></li>
+			<li><label>Cargo: </label> <SELECT name="cargo">
+					<OPTION value="cliente">Cliente</OPTION>
+					<OPTION value="gerenteGeneral">Gerente General</OPTION>
+					<OPTION value="gerenteDeOficina">Gerente De Oficina</OPTION>
+					<OPTION value="cajero">Cajero</OPTION>
+			</SELECT></li>
+			<li><label>Nacionalidad:</label> <input name="nacionalidad"
+				type="text" max-length="20" placeholder=" Nacionalidad"></li>
+			<li class="dirrecion"><label>Dirreci&oacuten:</label> <SELECT
+				name="tipoDirrecion">
+					<OPTION value="calle">Calle</OPTION>
+					<OPTION value="carrera">Carrera</OPTION>
+					<OPTION value="transversal">Transversal</OPTION>
+					<OPTION value="avenida">Avenida</OPTION>
+			</SELECT> <input name="numero" type="text" max-length="10"> # <input
+				name="numero1" type="text" max-length="10"> - <input
+				name="numero2" type="text" max-length="10"></li>
+			<li><label>Email:</label> <input name="email" type="email"
+				max-length="20" placeholder=" Email"></li>
+			<li><label>Telefono:</label> <input name="telefono" type="text"
+				max-length="20" placeholder=" Telefono"></li>
+			<li><label>Departamento:</label> <input name="departamento"
+				type="text" max-length="20" placeholder=" Departamento"></li>
+			<li><label>Ciudad:</label> <input name="ciudad" type="text"
+				max-length="20" placeholder=" Ciudad"></li>
+			<li><label>Codigo Postal:</label> <input name="codigoPostal"
+				type="text" max-length="20" placeholder=" Codigo Postal"></li>
+		</ul>
+		<a><button type="submit">Continuar</button></a>
+	</form>
+</body>
+</html>
