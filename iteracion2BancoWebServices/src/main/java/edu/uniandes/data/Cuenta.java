@@ -2,9 +2,8 @@ package edu.uniandes.data;
 
 import java.util.ArrayList;
 
-
 public class Cuenta {
-	
+
 	private String id;
 	private int saldo;
 	private String tipoCuenta;
@@ -12,8 +11,9 @@ public class Cuenta {
 	private boolean estaCerrado;
 	private Oficina oficina;
 	private ArrayList<Transaccion> transacciones;
-	
-	public Cuenta(String id, int saldo, String tipoCuenta, String moneda_Id, boolean estaCerrado, Oficina oficina) {
+
+	public Cuenta(String id, int saldo, String tipoCuenta, String moneda_Id,
+			boolean estaCerrado, Oficina oficina) {
 		super();
 		this.id = id;
 		this.saldo = saldo;
@@ -55,8 +55,5 @@ public class Cuenta {
 	public void setTransacciones(ArrayList<Transaccion> transacciones) {
 		this.transacciones = transacciones;
 	}
-	
-	
-
 
 }

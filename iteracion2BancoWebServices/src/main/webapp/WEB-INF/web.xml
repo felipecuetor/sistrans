@@ -1,147 +1,133 @@
-<!DOCTYPE web-app PUBLIC
- "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
- "http://java.sun.com/dtd/web-app_2_3.dtd" >
-
-<web-app>
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app id="WebApp_ID" version="2.5"
+ xmlns="http://java.sun.com/xml/ns/javaee"
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
   <display-name>Archetype Created Web Application</display-name>
   <servlet>
   	<servlet-name>Login</servlet-name>
-  	<display-name>Login</display-name>
-  	<description></description>
   	<servlet-class>edu.uniandes.servlets.Login</servlet-class>
   </servlet>
   <servlet>
   	<servlet-name>Clave</servlet-name>
-  	<display-name>Clave</display-name>
-  	<description></description>
   	<servlet-class>edu.uniandes.servlets.Clave</servlet-class>
   </servlet>
   <servlet>
   	<servlet-name>Recuperacion</servlet-name>
-  	<display-name>Recuperacion</display-name>
-  	<description></description>
   	<servlet-class>edu.uniandes.servlets.Recuperacion</servlet-class>
   </servlet>
   <servlet>
   	<servlet-name>RegistroUsuario</servlet-name>
-  	<display-name>RegistroUsuario</display-name>
-  	<description></description>
   	<servlet-class>edu.uniandes.servletsadministrador.RegistroUsuario</servlet-class>
   </servlet>
     <servlet>
   	<servlet-name>RegistroAdministrador</servlet-name>
-  	<display-name>RegistroAdministrador</display-name>
-  	<description></description>
   	<servlet-class>edu.uniandes.servlets.RegistroAdministrador</servlet-class>
   </servlet>
   <servlet>
   	<servlet-name>PasarInicio</servlet-name>
-  	<display-name>PasarInicio</display-name>
-  	<description></description>
   	<servlet-class>edu.uniandes.servlets.PasarInicio</servlet-class>
   </servlet>
   <servlet>
   	<servlet-name>Buscar</servlet-name>
-  	<display-name>Buscar</display-name>
-  	<description></description>
   	<servlet-class>edu.uniandes.servlets.Buscar</servlet-class>
   </servlet>
   <servlet>
   	<servlet-name>Registro</servlet-name>
-  	<display-name>Registro</display-name>
-  	<description></description>
   	<servlet-class>edu.uniandes.servlets.Registro</servlet-class>
   </servlet>
   <servlet>
   	<servlet-name>PaginaDeInicio</servlet-name>
-  	<display-name>PaginaDeInicio</display-name>
-  	<description></description>
   	<servlet-class>edu.uniandes.servlets.PaginaDeInicio</servlet-class>
   </servlet>
     <servlet>
   	<servlet-name>PaginaDeInicioAdministrador</servlet-name>
-  	<display-name>PaginaDeInicioAdministrador</display-name>
-  	<description></description>
   	<servlet-class>edu.uniandes.servletsadministrador.PaginaDeInicioAdministrador</servlet-class>
   </servlet>
   <servlet>
   	<servlet-name>RegistroOficina</servlet-name>
-  	<display-name>RegistroOficina</display-name>
-  	<description></description>
   	<servlet-class>edu.uniandes.servletsadministrador.RegistroOficina</servlet-class>
   </servlet>
   <servlet>
   	<servlet-name>RegistroPuntoDeAtencion</servlet-name>
-  	<display-name>RegistroPuntoDeAtencion</display-name>
-  	<description></description>
   	<servlet-class>edu.uniandes.servletsadministrador.RegistroPuntoDeAtencion</servlet-class>
   </servlet>
   <servlet>
   	<servlet-name>PaginaDeInicioUsuario</servlet-name>
-  	<display-name>PaginaDeInicioUsuario</display-name>
-  	<description></description>
   	<servlet-class>edu.uniandes.servletsusuario.PaginaDeInicioUsuario</servlet-class>
   </servlet>
   <servlet>
   	<servlet-name>hola</servlet-name>
-  	<display-name>hola</display-name>
-  	<description></description>
   	<servlet-class>edu.uniandes.servletsadministrador.hola</servlet-class>
   </servlet>
   <servlet>
   	<servlet-name>RegistroTransaccion</servlet-name>
-  	<display-name>RegistroTransaccion</display-name>
-  	<description></description>
   	<servlet-class>edu.uniandes.servletsadministrador.RegistroTransaccion</servlet-class>
   </servlet>
+  
+  <servlet>
+  	<servlet-name>RegistroCuentaXCuenta</servlet-name>
+  	<servlet-class>edu.uniandes.servletsadministrador.RegistroCuentaXCuenta</servlet-class>
+  </servlet>
+  
   <servlet>
   	<servlet-name>ActualizarPrestamo</servlet-name>
-  	<display-name>ActualizarPrestamo</display-name>
-  	<description></description>
   	<servlet-class>edu.uniandes.servletsadministrador.ActualizarPrestamo</servlet-class>
   </servlet>
   <servlet>
   	<servlet-name>CerrarCuenta</servlet-name>
-  	<display-name>CerrarCuenta</display-name>
-  	<description></description>
   	<servlet-class>edu.uniandes.servletsadministrador.CerrarCuenta</servlet-class>
   </servlet>
   <servlet>
   	<servlet-name>CerrarPrestamo</servlet-name>
-  	<display-name>CerrarPrestamo</display-name>
-  	<description></description>
   	<servlet-class>edu.uniandes.servletsadministrador.CerrarPrestamo</servlet-class>
   </servlet>
   <servlet>
   	<servlet-name>ConsultarCuentas</servlet-name>
-  	<display-name>ConsultarCuentas</display-name>
-  	<description></description>
   	<servlet-class>edu.uniandes.servletsusuario.ConsultarCuentas</servlet-class>
   </servlet>
   <servlet>
   	<servlet-name>ConsultarCliente</servlet-name>
-  	<display-name>ConsultarCliente</display-name>
-  	<description></description>
   	<servlet-class>edu.uniandes.servletsusuario.ConsultarCliente</servlet-class>
   </servlet>
   <servlet>
   	<servlet-name>ConsultarOperacionesMayorMovimiento</servlet-name>
-  	<display-name>ConsultarOperacionesMayorMovimiento</display-name>
-  	<description></description>
   	<servlet-class>edu.uniandes.servletsusuario.ConsultarOperacionesMayorMovimiento</servlet-class>
   </servlet>
   <servlet>
   	<servlet-name>ConsultarUsuarioMasActivo</servlet-name>
-  	<display-name>ConsultarUsuarioMasActivo</display-name>
-  	<description></description>
   	<servlet-class>edu.uniandes.servletsusuario.ConsultarUsuarioMasActivo</servlet-class>
   </servlet>
   <servlet>
   	<servlet-name>RegistrarCuenta</servlet-name>
-  	<display-name>RegistrarCuenta</display-name>
-  	<description></description>
   	<servlet-class>edu.uniandes.servletsadministrador.RegistrarCuenta</servlet-class>
   </servlet>
+  
+  <servlet>
+  	<servlet-name>ConsultarConsignacion</servlet-name>
+  	<servlet-class>edu.uniandes.servletsadministrador.ConsultarConsignacion</servlet-class>
+  </servlet>
+  <servlet>
+  	<servlet-name>ConsultarOperacionesV2</servlet-name>
+  	<servlet-class>edu.uniandes.servletsadministrador.ConsultarOperacionesV2</servlet-class>
+  </servlet>
+    <servlet>
+  <servlet-name>ConsultarOperacionesV3</servlet-name>
+  	<servlet-class>edu.uniandes.servletsadministrador.ConsultarOperacionesV3</servlet-class>
+  </servlet>
+  
+   <servlet-mapping>
+  	<servlet-name>ConsultarConsignacion</servlet-name>
+  	<url-pattern>/ConsultarConsignacion</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>ConsultarOperacionesV2</servlet-name>
+  	<url-pattern>/ConsultarOperacionesV2</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>ConsultarOperacionesV2</servlet-name>
+  	<url-pattern>/ConsultarOperacionesV2</url-pattern>
+  </servlet-mapping>
+  
   <servlet-mapping>
   	<servlet-name>Login</servlet-name>
   	<url-pattern>/Login</url-pattern>
@@ -202,6 +188,12 @@
   	<servlet-name>RegistroTransaccion</servlet-name>
   	<url-pattern>/RegistroTransaccion</url-pattern>
   </servlet-mapping>
+  
+  <servlet-mapping>
+  	<servlet-name>RegistroCuentaXCuenta</servlet-name>
+  	<url-pattern>/RegistroCuentaXCuenta</url-pattern>
+  </servlet-mapping>
+  
   <servlet-mapping>
   	<servlet-name>ActualizarPrestamo</servlet-name>
   	<url-pattern>/ActualizarPrestamo</url-pattern>

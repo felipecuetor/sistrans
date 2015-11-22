@@ -1,25 +1,17 @@
 <html>
 <head>
-	<title>Registro Transacci&oacuten</title>
+	<title>Consultar Operaciones V3</title>
 	<link rel="stylesheet" type="text/css" href="css/EstiloRegistro.css">
 	<link href='http://fonts.googleapis.com/css?family=Pinyon+Script' rel='stylesheet' type='text/css'>
 	<link href='http://fonts.googleapis.com/css?family=Roboto+Mono&subset=greek' rel='stylesheet' type='text/css'>
 	<link href='http://fonts.googleapis.com/css?family=Time+News+Roman' rel='stylesheet' type='text/css'>
 </head>
 <body>
-	<form name="RegistroTransaccion" action="RegistroTransaccion" method="post">
-		<h1>Registro Transacci&oacuten</h1>
+	<form name="ConsultarOperacionesV3" action="ConsultarOperacionesV3" method="post">
+		<h1>Consultar Operaciones V3</h1>
 		<ul>
-		<li>
-			<label>ID Transacci&oacuten: </label>
-			<input name="id" type="text" max-length="20" placeholder=" El identificador">
-		</li>
-		<li>
-			<label>Cantidad: </label>
-			<input name="cantidad" type="text" max-length="20" placeholder=" Monto">
-		</li>
-		<li class= "fecha">
-			<label>Fecha De La Transacci&oacuten:  Dia: </label>
+			<li class= "fecha">
+			<label>Fecha De Inicio:  Dia: </label>
 			<SELECT name="diaInicio">
 				<OPTION value="01">01</OPTION>
 				<OPTION value="02">02</OPTION>
@@ -88,47 +80,8 @@
 				<OPTION value="2016">2016</OPTION>
 			</SELECT>
 		</li>
-		<li>
-			<label>Terminado:</label>
-			<input name="done" type="text" max-length="20" placeholder=" SI O NO">
-			</SELECT>
-				<SELECT name="done">
-				<OPTION value="NO">NO</OPTION>
-				<OPTION value="SI">SI</OPTION>
-			</SELECT>
-		</li>
-		<li>
-			<label>Tipo:</label>
-			</SELECT>
-				<SELECT name="tipo">
-				<OPTION value="Prestamo">Prestamo</OPTION>
-				<OPTION value="Retiro">Retiro</OPTION>
-				<OPTION value="Depsito">Deposito</OPTION>
-				<OPTION value="Transferencia">Transferencia</OPTION>
-			</SELECT>
-		</li>
-		<li>
-			<label>Id Cuenta Origen:</label>
-			<input name="cuenta_Origen" type="text" max-length="20" placeholder=" Id Cuenta Origen">
-		</li>
-		<li>
-			<label>Id Cuenta Destino:</label>
-			<input name="cuenta_Destino" type="text" max-length="20" placeholder=" Id Cuenta Destino">
-		</li>
-		<li>
-			<label>Tasa De Cambio:</label>
-			<input name="cambio" type="text" max-length="20" placeholder=" Tasa De Cambio">
-		</li>
-		<li>
-			<label>Interes:</label>
-			<input name="interes" type="text" max-length="20" placeholder=" Tasa de interes">
-		</li>
-		<li>
-			<label>Numero De Cuotas:</label>
-			<input name="numeroCuotas" type="text" max-length="20" placeholder=" Numero De Cuotas">
-		</li>
 		<li class= "fecha">
-			<label>Fecha De Pago:  Dia: </label>
+			<label>Fecha De Final:  Dia: </label>
 			<SELECT name="diaFinal">
 				<OPTION value="01">01</OPTION>
 				<OPTION value="02">02</OPTION>
@@ -172,9 +125,9 @@
 				<OPTION value="07">07</OPTION>
 				<OPTION value="08">08</OPTION>
 				<OPTION value="09">09</OPTION>
-				<OPTION value="10">10</OPTION>
+				<OPTION value="09">10</OPTION>
 				<OPTION value="11">11</OPTION>
-				<OPTION value="12">12</OPTION>
+				<OPTION value="11">12</OPTION>
 			</SELECT>
 			<label>A&ntildeo: </label>
 				<SELECT name="yearFinal">
@@ -198,12 +151,18 @@
 			</SELECT>
 		</li>
 		<li>
-			<label>Valor De Una Cuota:</label>
-			<input name="valorCuota" type="text" max-length="20" placeholder=" Valor De Una Cuota">
+				<label>Tipo: </label>
+				<SELECT name="tipo">
+				<OPTION value="tipo">Tipo</OPTION>
+				<OPTION value="monto">Monto</OPTION>
+				<OPTION value="cuotas">Cuotas</OPTION>
+				<OPTION value="interes">Interes</OPTION>
+
+			</SELECT>
 		</li>
 		<li>
-			<label>Saldo Pendiente:</label>
-			<input name="saldoPendiente" type="text" max-length="20" placeholder=" Saldo Pendiente">
+			<label>Valor 2: </label>
+			<input name="val2" type="text" max-length="20" placeholder=" Valor">
 		</li>
 		</ul>
 		<a><button type = "submit">Continuar</button></a>

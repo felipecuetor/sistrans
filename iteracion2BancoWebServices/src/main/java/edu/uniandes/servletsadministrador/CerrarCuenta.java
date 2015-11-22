@@ -38,6 +38,7 @@ public class CerrarCuenta extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String idCuenta = request.getParameter("id");
+		String idNueva = request.getParameter("idNueva");
 
 
 
@@ -51,7 +52,7 @@ public class CerrarCuenta extends HttpServlet {
 
 		try {
 			
-			administrador.cerrarCuenta(idCuenta, administrador.getUsuario());
+			administrador.cerrarCuenta(idCuenta, administrador.getUsuario(), idNueva);
 			
 			HttpSession session1 = request.getSession();
 			session1.setAttribute("administrador", administrador);
@@ -75,18 +76,22 @@ public class CerrarCuenta extends HttpServlet {
 				out.println("<li><a href=\"RegistroInicio.html\"><button type = \"button\">Registro</button></a></li>");
 				out.println("<li><a href=\"#\"><button type = \"button\">#</button></a></li>");
 				out.println("<li class=\"horario\"><a href=\"ConsultarInicioAdministrador.html\"><button type = \"button\">Consultas</button></a></li>");
-			}else if (cargo == 1) {
+				out.println("<li><a href=\"CuentaXCuenta.html\"><button type = \"button\">Vincular Cuentas</button></a></li>");
+			} else if (cargo == 1) {
 				out.println("<li><a href=\"#\"><button type = \"button\">#</button></a></li>");
 				out.println("<li><a href=\"#\"><button type = \"button\">#</button></a></li>");
 				out.println("<li class=\"horario\"><a href=\"ConsultarInicioAdministrador.html\"><button type = \"button\">Consultas</button></a></li>");
-			}else if (cargo == 3) {
+				out.println("<li><a href=\"CuentaXCuenta.html\"><button type = \"button\">Vincular Cuentas</button></a></li>");
+			} else if (cargo == 3) {
 				out.println("<li><a href=\"RegistroInicioGerenteOficina.html\"><button type = \"button\">Registro</button></a></li>");
 				out.println("<li class=\"acerca\"><a href=\"CerrarInicio.html\" ><button type = \"button\">Finalizar Tramites</button></a></li>");
 				out.println("<li class=\"horario\"><a href=\"ConsultarInicioAdministrador.html\"><button type = \"button\">Consultas</button></a></li>");
-			}else if (cargo == 4) {
+				out.println("<li><a href=\"CuentaXCuenta.html\"><button type = \"button\">Vincular Cuentas</button></a></li>");
+			} else if (cargo == 4) {
 				out.println("<li><a href=\"RegistroInicioCajero.html\"><button type = \"button\">Registro</button></a></li>");
 				out.println("<li><a href=\"#\"><button type = \"button\">#</button></a></li>");
 				out.println("<li><a href=\"#\"><button type = \"button\">#</button></a></li>");
+				out.println("<li><a href=\"CuentaXCuenta.html\"><button type = \"button\">Vincular Cuentas</button></a></li>");
 			}
 			out.println("<li class=\"Salir\"><a href=\"Inicio.html\"><button type = \"button\">Salir</button></a></li>");
 			out.println("</ul>");
@@ -109,7 +114,7 @@ public class CerrarCuenta extends HttpServlet {
 			out.println("</body>");
 			out.println("</html>");
 			
-		} catch (SQLException e) {
+		} catch (Exception e) {
 			out.println("<html>");
 			out.println("<head>");
 			out.println("<title>Inicio</title>");

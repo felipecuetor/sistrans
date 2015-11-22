@@ -3,6 +3,7 @@ package edu.uniandes.servletsadministrador;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -10,19 +11,18 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import edu.uniandes.data.Oficina;
 import edu.uniandes.domain.Administrador;
 
 /**
- * Servlet implementation class RegistroOficina
+ * Servlet implementation class CerrarCuenta
  */
-public class RegistroOficina extends HttpServlet {
+public class ConsultarPunto extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public RegistroOficina() {
+    public ConsultarPunto() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -38,10 +38,9 @@ public class RegistroOficina extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String nombre = request.getParameter("nombre");
-		String stringGerente = request.getParameter("gerente");
-		String direccion = request.getParameter("tipoDirrecion") + request.getParameter("numero") + "#" + request.getParameter("numero1") + "-" + request.getParameter("numero2");
-		String telefono = request.getParameter("telefono");
+		String punto1 = request.getParameter("punto1");
+		String punto2 = request.getParameter("punto2");
+
 
 
 		HttpSession session = request.getSession(true);
@@ -53,16 +52,12 @@ public class RegistroOficina extends HttpServlet {
 		System.out.println("Inicio");
 
 		try {
-			System.out.println("Pregunto por el gerente");
-			Administrador gerente = administrador.obtenerGerente(stringGerente);
-			System.out.println("Tengo al gerente");
 			
-			Oficina nuevaOficina = new Oficina(nombre, direccion, telefono, gerente);
-			System.out.println("Agrego la oficina");
-			administrador.registrarOficina(nuevaOficina);
+			ArrayList<String> resp = administrador.consultarPunto(punto1,punto2);
 			
 			HttpSession session1 = request.getSession();
 			session1.setAttribute("administrador", administrador);
+			
 			
 			out.println("<html>");
 			out.println("<head>");
@@ -75,6 +70,8 @@ public class RegistroOficina extends HttpServlet {
 			out.println("<header>");
 			out.println("<nav>");
 			out.println("<ul>");
+			out.println("<li class=\"imagen\"><div><img src=\"css/dazzle.jpg\"></div></li>");
+			out.println("<li><input  name = \"buscar\" type=\"search\" placeholder=\"Search...\"></li>");
 			int cargo = administrador.getCargo();
 			if (cargo == 0) {
 				out.println("<li><a href=\"RegistroInicio.html\"><button type = \"button\">Registro</button></a></li>");
@@ -104,12 +101,12 @@ public class RegistroOficina extends HttpServlet {
 			out.println("<section class=\"main\">");
 			out.println("<section Class=\"articles\">");
 			out.println("<article>");
-			out.println("<h2>" + "Se ha registrado la Oficina: " + nuevaOficina.getNombre() + "</h2>");
 			out.println("<br>");
-			out.println("<p> Nombre: "+ nuevaOficina.getNombre() + "</p>");
-			out.println("<p> Gerente: "+ nuevaOficina.getGerente().getUsuario() + "</p>");
-			out.println("<p> Direccion: "+ nuevaOficina.getDireccion() + "</p>");
-			out.println("<p> Telefono: "+ nuevaOficina.getTelefono() + "</p>");
+			for(int i = 0;i<resp.size();i++)
+			{
+				String actual = resp.get(i);
+				out.println(actual);
+			}
 			out.println("<br>");
 			out.println("</article>");
 			out.println("</section>");
@@ -121,7 +118,7 @@ public class RegistroOficina extends HttpServlet {
 			out.println("</body>");
 			out.println("</html>");
 			
-		} catch (SQLException e) {
+		} catch (Exception e) {
 			out.println("<html>");
 			out.println("<head>");
 			out.println("<title>Inicio</title>");
@@ -152,14 +149,15 @@ public class RegistroOficina extends HttpServlet {
 				out.println("<li><a href=\"RegistroInicioCajero.html\"><button type = \"button\">Registro</button></a></li>");
 				out.println("<li><a href=\"#\"><button type = \"button\">#</button></a></li>");
 				out.println("<li><a href=\"#\"><button type = \"button\">#</button></a></li>");
-			}
+			}		
 			out.println("<li class=\"Salir\"><a href=\"Inicio.html\"><button type = \"button\">Salir</button></a></li>");
+			out.println("</ul>");
 			out.println("</nav>");
 			out.println("</header>");
 			out.println("<section class=\"main\">");
 			out.println("<section Class=\"articles\">");
 			out.println("<article>");
-			out.println("<h2> No se pudo registrar el Oficina</h2>");
+			out.println("<h2> No se pudo Actualizar</h2>");
 			out.println("<br>");
 			out.println("<p> El error es: " + e.getMessage() + "</p>");
 			out.println("<br>");
@@ -175,5 +173,4 @@ public class RegistroOficina extends HttpServlet {
 		}
 		
 	}
-
 }

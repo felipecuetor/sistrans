@@ -41,7 +41,7 @@ public class Recuperacion extends HttpServlet {
 		PrintWriter out = response.getWriter();
 		
 		try {
-			Usuario usuarioCreado = new Usuario("diego", "Diego Riveros", "95120607449", "Cedula", 1, "Colombia", "Calle 138#75-75", "diego@hotmail.com", "4662325", "Bogotá", "Cundinamarca", "11");
+			Usuario usuarioCreado = new Usuario("diego", "Diego Riveros", "95120607449", "Cedula", 1, "Colombia", "Calle 138#75-75", "diego@hotmail.com", "4662325", "Bogotá", "Cundinamarca", "11", "natural");
 			Usuario usuario = usuarioCreado.darUsuarioPorEmail(emailUsuario);
 			HttpSession session = request.getSession();
 			session.setAttribute("usuario", usuario);

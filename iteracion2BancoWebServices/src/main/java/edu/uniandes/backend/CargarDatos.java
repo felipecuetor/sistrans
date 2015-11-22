@@ -29,7 +29,11 @@ public class CargarDatos {
 
 		conectarExcel();
 
-
+		cargarUsuarios();
+		cargarOficinas();
+		cargarPuntos();
+		cargarCuentas();
+		cargarPrestamos();
 	}
 
 	// Abre el archivo Excel
@@ -87,9 +91,11 @@ public class CargarDatos {
 			codigoPostal = sheet.getCell(j, i).getContents();
 			j = 0;
 
+			String tipoPersona = "Natural";
+			
 			Usuario u = new Usuario(usuario, nombre, cedula, tipoCedula,
 					Integer.parseInt(cargo), nacionalidad, direccionFisica,
-					email, telefono, ciudad, departamento, codigoPostal);
+					email, telefono, ciudad, departamento, codigoPostal, tipoPersona);
 
 			try {
 				admin.registrarUsuario(u, admin.getCargo());
@@ -192,7 +198,7 @@ public class CargarDatos {
 			j++;
 			estaCerrada = sheet.getCell(j, i).getContents();
 			j++;
-			oficina = sheet.getCell(j, i).getContents();
+			estaCerrada = sheet.getCell(j, i).getContents();
 			j=0;
 
 			try {

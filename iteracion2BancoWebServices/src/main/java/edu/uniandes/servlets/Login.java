@@ -2,6 +2,7 @@ package edu.uniandes.servlets;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -10,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import edu.uniandes.backend.ConectionMYSQLAdministradorDAO;
+import edu.uniandes.data.Cuenta;
 import edu.uniandes.domain.Administrador;
 import edu.uniandes.domain.Usuario;
 
@@ -18,40 +20,62 @@ import edu.uniandes.domain.Usuario;
  */
 public class Login extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public Login() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#HttpServlet()
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public Login() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
+	protected void doGet(HttpServletRequest request,
+			HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 	}
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request,
+			HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		String nombreUsuario =  request.getParameter("usuario");
+		String nombreUsuario = request.getParameter("usuario");
 		ConectionMYSQLAdministradorDAO conection = new ConectionMYSQLAdministradorDAO();
 		PrintWriter out = response.getWriter();
-		
+
 		try {
-			Usuario usuario = conection.ejecutarQueryObtenerUsuario("SELECT * FROM USUARIO WHERE USUARIO.NOMBRE = " + "'" + nombreUsuario + "'");
+			Usuario usuario = conection
+					.ejecutarQueryObtenerUsuario("SELECT * FROM USUARIO WHERE USUARIO.NOMBRE = "
+							+ "'" + nombreUsuario + "'");
 			
+//			ArrayList<Cuenta> cuentas = usuario.consultarCuentas("tipoCuenta", "Ahorros", "", "", null, null, "");
+//			cuentas.addAll(usuario.consultarCuentas("tipoCuentas", "Correinte", "", "", null, null, ""));
+//			
+//			usuario.setCuentas(cuentas);
+//			
+//			ArrayList<Cuenta> cuentasEmpleados = usuario.consultarCuentas();
+//			
+//			usuario.setCuentasEmpleados();
+
 			if (usuario != null) {
 				int cargo = usuario.getCargo();
 				HttpSession session = request.getSession();
-			
+
 				if (cargo == 0 || cargo == 1 || cargo == 3 || cargo == 4) {
-					Administrador administrador = new Administrador(usuario.getUsuario(), usuario.getNombre(), usuario.getCedula(), usuario.getTipoCedula(), usuario.getCargo(), usuario.getNacionalidad(), usuario.getDireccionFisica(), usuario.getEmail(), usuario.getTelefono(), usuario.getCiudad(), usuario.getDepartamento(), usuario.getCodigoPostal());
+					Administrador administrador = new Administrador(
+							usuario.getUsuario(), usuario.getNombre(),
+							usuario.getCedula(), usuario.getTipoCedula(),
+							usuario.getCargo(), usuario.getNacionalidad(),
+							usuario.getDireccionFisica(), usuario.getEmail(),
+							usuario.getTelefono(), usuario.getCiudad(),
+							usuario.getDepartamento(),
+							usuario.getCodigoPostal(), usuario.getTipoPersona());
 					session.setAttribute("administrador", administrador);
 					session.setAttribute("usuario", null);
 					out.println("<html>");
@@ -71,18 +95,34 @@ public class Login extends HttpServlet {
 						out.println("<li><a href=\"RegistroInicio.html\"><button type = \"button\">Registro</button></a></li>");
 						out.println("<li><a href=\"#\"><button type = \"button\">#</button></a></li>");
 						out.println("<li class=\"horario\"><a href=\"ConsultarInicioAdministrador.html\"><button type = \"button\">Consultas</button></a></li>");
-					}else if (cargo == 1) {
+						out.println("<li><a href=\"CuentaXCuenta.html\"><button type = \"button\">Vincular Cuentas</button></a></li>");
+						out.println("<li><a href=\"ConsultarOperacionesV2.html\"><button type = \"button\">Consultar Operaciones V2</button></a></li>");
+						out.println("<li><a href=\"ConsultarOperacionesV3.html\"><button type = \"button\">Consultar Operaciones V3</button></a></li>");
+						out.println("<li><a href=\"ConsultarPunto.html\"><button type = \"button\">Consultar punto</button></a></li>");
+					} else if (cargo == 1) {
 						out.println("<li><a href=\"#\"><button type = \"button\">#</button></a></li>");
 						out.println("<li><a href=\"#\"><button type = \"button\">#</button></a></li>");
 						out.println("<li class=\"horario\"><a href=\"ConsultarInicioAdministrador.html\"><button type = \"button\">Consultas</button></a></li>");
-					}else if (cargo == 3) {
+						out.println("<li><a href=\"CuentaXCuenta.html\"><button type = \"button\">Vincular Cuentas</button></a></li>");
+						out.println("<li><a href=\"ConsultarOperacionesV2.html\"><button type = \"button\">Consultar Operaciones V2</button></a></li>");
+						out.println("<li><a href=\"ConsultarOperacionesV3.html\"><button type = \"button\">Consultar Operaciones V3</button></a></li>");
+						out.println("<li><a href=\"ConsultarPunto.html\"><button type = \"button\">Consultar punto</button></a></li>");
+					} else if (cargo == 3) {
 						out.println("<li><a href=\"RegistroInicioGerenteOficina.html\"><button type = \"button\">Registro</button></a></li>");
 						out.println("<li class=\"acerca\"><a href=\"CerrarInicio.html\" ><button type = \"button\">Finalizar Tramites</button></a></li>");
 						out.println("<li class=\"horario\"><a href=\"ConsultarInicioAdministrador.html\"><button type = \"button\">Consultas</button></a></li>");
-					}else if (cargo == 4) {
+						out.println("<li><a href=\"CuentaXCuenta.html\"><button type = \"button\">Vincular Cuentas</button></a></li>");
+						out.println("<li><a href=\"ConsultarOperacionesV2.html\"><button type = \"button\">Consultar Operaciones V2</button></a></li>");
+						out.println("<li><a href=\"ConsultarOperacionesV3.html\"><button type = \"button\">Consultar Operaciones V3</button></a></li>");
+						out.println("<li><a href=\"ConsultarPunto.html\"><button type = \"button\">Consultar punto</button></a></li>");
+					} else if (cargo == 4) {
 						out.println("<li><a href=\"RegistroInicioCajero.html\"><button type = \"button\">Registro</button></a></li>");
 						out.println("<li><a href=\"#\"><button type = \"button\">#</button></a></li>");
 						out.println("<li><a href=\"#\"><button type = \"button\">#</button></a></li>");
+						out.println("<li><a href=\"CuentaXCuenta.html\"><button type = \"button\">Vincular Cuentas</button></a></li>");
+						out.println("<li><a href=\"ConsultarOperacionesV2.html\"><button type = \"button\">Consultar Operaciones V2</button></a></li>");
+						out.println("<li><a href=\"ConsultarOperacionesV3.html\"><button type = \"button\">Consultar Operaciones V3</button></a></li>");
+						out.println("<li><a href=\"ConsultarPunto.html\"><button type = \"button\">Consultar punto</button></a></li>");
 					}
 					out.println("<li class=\"Salir\"><a href=\"Inicio.html\"><button type = \"button\">Salir</button></a></li>");
 					out.println("</ul>");
@@ -104,7 +144,7 @@ public class Login extends HttpServlet {
 					out.println("</form>");
 					out.println("</body>");
 					out.println("</html>");
-				}else if (cargo == 2) {
+				} else if (cargo == 2) {
 					session.setAttribute("usuario", usuario);
 					session.setAttribute("administrador", null);
 					out.println("<html>");
@@ -146,7 +186,7 @@ public class Login extends HttpServlet {
 				}
 			}
 		} catch (Exception e) {
-			
+
 			e.printStackTrace();
 			out.println("<html>");
 			out.println("<head>");
